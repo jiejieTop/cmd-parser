@@ -2,10 +2,11 @@
  * @Author: jiejie
  * @Github: https://github.com/jiejieTop
  * @Date: 2019-12-13 10:47:30
- * @LastEditTime: 2019-12-13 19:23:32
+ * @LastEditTime: 2019-12-14 08:58:48
  * @Description: the code belongs to jiejie, please keep the author information and source code according to the license.
  */
 #include "cmd.h"
+#include <stdio.h>
 
 static cmd_t *_cmd_begin, *_cmd_end;
 
@@ -34,6 +35,15 @@ static int _cmd_match(const char *str, const char *cmd)
     
     return *str - *cmd;
 }
+
+static void _list(void)
+{
+    cmd_t *index;
+    for (index = _cmd_begin; index < _cmd_end; index = _get_next_cmd(index)) {
+        printf("%s\n",index->cmd);
+    }
+}
+REGISTER_CMD(_list, _list);
 
 void cmd_init(void)
 {
