@@ -2,7 +2,7 @@
  * @Author: jiejie
  * @Github: https://github.com/jiejieTop
  * @Date: 2019-12-13 10:48:52
- * @LastEditTime: 2019-12-16 20:25:00
+ * @LastEditTime: 2019-12-16 21:26:56
  * @Description: the code belongs to jiejie, please keep the author information and source code according to the license.
  */
 #ifndef _CMD_H_
@@ -32,7 +32,7 @@ typedef struct cmd {
 
 #define REGISTER_CMD(cmd, handler)                              \
     const char _register_##cmd##_cmd[] = #cmd;                  \
-    CMD_USED cmd_t _register_##cmd SECTION("CMDS")=       \
+    CMD_USED cmd_t _register_##cmd SECTION("CMDS")=             \
     {                                                           \
         _register_##cmd##_cmd,                                  \
         (unsigned int)CMD_HASH,                                 \
