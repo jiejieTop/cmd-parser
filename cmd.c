@@ -2,7 +2,7 @@
  * @Author: jiejie
  * @Github: https://github.com/jiejieTop
  * @Date: 2019-12-13 10:47:30
- * @LastEditTime: 2019-12-16 20:43:34
+ * @LastEditTime: 2019-12-17 13:38:02
  * @Description: the code belongs to jiejie, please keep the author information and source code according to the license.
  */
 #include "cmd.h"
@@ -94,6 +94,7 @@ void cmd_parsing(char *str)
         if (hash == index->hash) {
             if (_cmd_match(str, index->cmd) == 0) {
                 index->handler();
+                break;
             }
         }
     }

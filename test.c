@@ -2,7 +2,7 @@
  * @Author: jiejie
  * @Github: https://github.com/jiejieTop
  * @Date: 2019-12-13 19:15:30
- * @LastEditTime: 2019-12-13 19:20:41
+ * @LastEditTime: 2019-12-17 13:38:49
  * @Description: the code belongs to jiejie, please keep the author information and source code according to the license.
  */
 #include "cmd.h"
@@ -32,9 +32,11 @@ int main(void)
 
     while (1)
     {
+        cmd_parsing("_list");
         cmd_parsing("test1");
         cmd_parsing("test2");
         cmd_parsing("test3");
+        delay(1000);
     }
     
     return 0;
