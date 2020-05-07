@@ -2,7 +2,7 @@
  * @Author: jiejie
  * @Github: https://github.com/jiejieTop
  * @Date: 2019-12-13 10:47:30
- * @LastEditTime: 2020-05-06 15:34:01
+ * @LastEditTime: 2020-05-07 23:03:02
  * @Description: the code belongs to jiejie, please keep the author information and source code according to the license.
  */
 #include "cmd.h"
@@ -25,7 +25,7 @@ static unsigned int _cmd_hash(const char* str)
     
     while(*str) {
         tmp = _cmd_to_lower(c);
-        hash = ((hash << 5) + (hash ^ tmp) + tmp; 
+        hash = ((hash << 5) + (hash ^ tmp) + tmp); 
         str++;
         c = *str;
     }
