@@ -24,19 +24,19 @@ cmd-parser 遵循 [Apache License v2.0](https://github.com/jiejieTop/mqttclient/
 
 在工程中的任意位置均可调用（在函数外）
 
-```js
+```c
 REGISTER_CMD(test1, test1_cmd);
 ```
 
 2. cmd初始化
 
-```js
+```c
 cmd_init();
 ```
 
 3. 解析命令
 
-```js
+```c
 cmd_parsing("test1");
 ```
 
@@ -53,7 +53,7 @@ cmd_parsing("test1");
 
 
 ## test.c
-```js
+```c
 #include "cmd.h"
 
 void test1_cmd(void)
