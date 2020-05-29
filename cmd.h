@@ -26,7 +26,7 @@ typedef void (*cmd_handler)(void);
 
 typedef struct cmd {
     const char*     cmd;
-	const char*     cmd_mess;
+    const char*     cmd_mess;
     unsigned int    hash;
     cmd_handler     handler;
 } cmd_t;
@@ -37,7 +37,7 @@ typedef struct cmd {
     CMD_USED cmd_t _register_##cmd SECTION("CMDS")=             \
     {                                                           \
         _register_##cmd##_cmd,                                  \
-			  _register_##cmd##_desc,                           \
+        _register_##cmd##_desc,                                 \
         (unsigned int)CMD_HASH,                                 \
         (cmd_handler)&handler                                   \
     };
