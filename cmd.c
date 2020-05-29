@@ -64,10 +64,10 @@ static void _list(void)
 {
     cmd_t *index;
     for (index = _cmd_begin; index < _cmd_end; index = _get_next_cmd(index)) {
-        printf("%s\n",index->cmd);
+        printf("%s -->%s\n",index->cmd,index->desc);
     }
 }
-REGISTER_CMD(_list, _list);
+REGISTER_CMD(_list, _list,list all command);
 
 void cmd_init(void)
 {

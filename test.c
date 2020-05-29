@@ -22,9 +22,9 @@ void test3_cmd(void)
     printf("test3_cmd\n");
 }
 
-REGISTER_CMD(test1, test1_cmd);
-REGISTER_CMD(test2, test2_cmd);
-REGISTER_CMD(test3, test3_cmd);
+REGISTER_CMD(test1, test1_cmd,test1 demo);
+REGISTER_CMD(test2, test2_cmd,test2 demo);
+REGISTER_CMD(test3, test3_cmd,test3 demo);
 
 int main(void)
 {
