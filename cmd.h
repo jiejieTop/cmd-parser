@@ -26,15 +26,18 @@ typedef void (*cmd_handler)(void);
 
 typedef struct cmd {
     const char*     cmd;
+	const char*     cmd_mess;
     unsigned int    hash;
     cmd_handler     handler;
 } cmd_t;
 
-#define REGISTER_CMD(cmd, handler)                              \
+#define REGISTER_CMD(cmd, handler,desc)                         \
     const char _register_##cmd##_cmd[] = #cmd;                  \
+    const char _register_##cmd##_desc[] = #desc;                \
     CMD_USED cmd_t _register_##cmd SECTION("CMDS")=             \
     {                                                           \
         _register_##cmd##_cmd,                                  \
+			  _register_##cmd##_desc,                           \
         (unsigned int)CMD_HASH,                                 \
         (cmd_handler)&handler                                   \
     };
