@@ -13,6 +13,7 @@
 **/List/*
 **/Obj/*
 *.dep
+*.dnx
 
 
 # KEIL 
@@ -43,3 +44,7 @@ JLinkLog.txt
 *.Administrator
 *.uvopt
 *.hex
+*.bin
+*.uvguix.*
+*.scvd
+*.uvoptx
