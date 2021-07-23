@@ -1,1 +1,21 @@
 .vscode
+
+# IAR Settings 
+**/settings/*.crun 
+**/settings/*.dbgdt 
+**/settings/*.cspy 
+**/settings/*.cspy.* 
+**/settings/*.xcl 
+**/settings/*.dni 
+**/settings/*.wsdt 
+**/settings/*.wspos 
+
+# IAR Debug Obj 
+**/Exe/*
+**/List/*
+**/Obj/*
+
+
+
+
+
