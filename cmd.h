@@ -1,9 +1,17 @@
 /*
- * @Author: jiejie
- * @Github: https://github.com/jiejieTop
- * @Date: 2019-12-13 10:48:52
- * @LastEditTime: 2019-12-16 21:26:56
- * @Description: the code belongs to jiejie, please keep the author information and source code according to the license.
+ * Copyright (c) 2019, jiejie <https://github.com/jiejieTop>
+ * Copyright (c) 2020, hong54321 <https://github.com/hong54321>
+ * Copyright (c) 2022, smartmx <smartmx@qq.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2019-12-13     jiejie       the first version
+ * 2020-03-06     jiejie       fix the hash algorithm bug
+ * 2020-03-29     hong54321    update
+ * 2022-04-01     smartmx      add gcc support
+ *
  */
 #ifndef _CMD_H_
 #define _CMD_H_
@@ -17,6 +25,9 @@
 #elif defined (__IAR_SYSTEMS_ICC__)             /* IAR Compiler */
     #define SECTION(x)                  @ x
     #define CMD_USED                    __root
+#elif defined (__GNUC__)
+    #define SECTION(x)                  __attribute__((section(x)))
+    #define CMD_USED                    __attribute__((used))
 #else
     #error "not supported tool chain..."
 #endif
@@ -24,9 +35,10 @@
 
 typedef void (*cmd_handler)(void);
 
-typedef struct cmd {
-    const char*     cmd;
-    const char*     cmd_mess;
+typedef struct cmd
+{
+    const char     *cmd;
+    const char     *cmd_mess;
     unsigned int    hash;
     cmd_handler     handler;
 } cmd_t;
