@@ -18,7 +18,7 @@
 
 cmd-parser 遵循 [Apache License v2.0](https://github.com/jiejieTop/mqttclient/blob/master/LICENSE) 开源协议。鼓励代码共享和尊重原作者的著作权，可以自由的使用、修改源代码，也可以将修改后的代码作为开源或闭源软件发布，**但必须保留原作者版权声明**。
 
-## 使用方法
+## MDK和IAR编译器使用方法
 
 1. 注册命令
 
@@ -40,17 +40,59 @@ cmd_init();
 cmd_parsing("test1");
 ```
 
+## GCC编译器使用方法
+
+GCC工程需要在工程的ld文件中找到非零变量的初始化链接代码，将下面的代码粘贴到最后面即可
+
+```c
+. = ALIGN(4);
+PROVIDE( CMDS_Base = . );
+KEEP(*(CMDS))
+PROVIDE( CMDS_Limit = . );
+. = ALIGN(4);
+```
+
+例如：
+
+```c
+.data :
+{
+    . = ALIGN(4); 
+    PROVIDE(_data_vma = .);
+    *(.gnu.linkonce.r.*)
+    *(.data .data.*)
+    *(.gnu.linkonce.d.*)
+    . = ALIGN(8);
+    PROVIDE( __global_pointer$ = . + 0x800 );
+    *(.sdata .sdata.*)
+    *(.gnu.linkonce.s.*)
+    . = ALIGN(8);
+    *(.srodata.cst16)
+    *(.srodata.cst8)
+    *(.srodata.cst4)
+    *(.srodata.cst2)
+    *(.srodata .srodata.*)
+    . = ALIGN(4);
+    
+    /* this section is for cmd parser */
+    PROVIDE( CMDS_Base = . );
+    KEEP(*(CMDS))
+    PROVIDE( CMDS_Limit = . );
+    . = ALIGN(4);
+    
+    PROVIDE( _edata = .);
+} >RAM AT>FLASH
+
+```
+
+剩余步骤和上一节**MDK和IAR编译器使用方法**一致。
+
 ## 特色
 
 - 用户无需关心命令的存储区域与大小，由编译器静态分配。
 - 加入哈希算法超快速匹配命令，时间复杂度从O(n*m)变为O(n)。
 - 命令支持忽略大小写。
 - 非常易用与非常简洁的代码（不足150行）。
-
-## 注意事项
-
-- 本代码目前只支持`MDK`与`IAR`的编译器，对于`gcc`尚未移植，欢迎参与贡献
-
 
 ## test.c
 ```c
