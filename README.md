@@ -25,7 +25,7 @@ cmd-parser 遵循 [Apache License v2.0](https://github.com/jiejieTop/mqttclient/
 在工程中的任意位置均可调用（在函数外）
 
 ```c
-REGISTER_CMD(test1, test1_cmd);
+REGISTER_CMD(test1, test1_cmd, test1 demo);
 ```
 
 2. cmd初始化
@@ -71,9 +71,9 @@ void test3_cmd(void)
     printf("test3_cmd\n");
 }
 
-REGISTER_CMD(test1, test1_cmd);
-REGISTER_CMD(test2, test2_cmd);
-REGISTER_CMD(test3, test3_cmd);
+REGISTER_CMD(test1, test1_cmd,test1 demo);
+REGISTER_CMD(test2, test2_cmd,test2 demo);
+REGISTER_CMD(test3, test3_cmd,test3 demo);
 
 int main(void)
 {
@@ -84,6 +84,7 @@ int main(void)
         cmd_parsing("test1");
         cmd_parsing("test2");
         cmd_parsing("test3");
+        delay(1000);
     }
     
     return 0;
